@@ -1,4 +1,5 @@
-import { program } from "commander";
+import { Command } from "commander";
+const program = new Command();
 
 program
   .option("-s, --show", "Display your information")
