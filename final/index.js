@@ -1,33 +1,34 @@
-// Demo 1 (run node on terminal)
-// console.log("Hello World");
+import { program } from "commander";
 
-// ------------------------------------
+program
+  .option("-s, --show", "Display your information")
+  .option("-n, --name <name>", "Your name")
+  .option("-g, --gender <gender>", "Your gender");
 
-// Demo 2 (Global Variables)
-// global.foo = 3;
+program.parse(process.argv);
 
-// ------------------------------------
+const options = program.opts();
 
-//  Demo 3: Common Js Module
-// const name = "Marvin";
-// module.exports = { name };
+const user = {
+  name: options.name || "Unknown",
+  gender: options.gender || "Unknown",
+};
 
-// ------------------------------------
+const displayUser = () => {
+  console.log("User Information:");
+  console.log(`Name: ${user.name}`);
+  console.log(`Gender: ${user.gender}`);
+};
 
-// Demo 4: ES Modules
-// Task: convert name variable to ESM (You learn this in React Lessons)
-// export const name = "Marvin";
+if (options.show) {
+  displayUser();
+} else {
+  console.warn("\x1B[31m Unknown action type!");
+}
 
-// ------------------------------------
-// Demo 5: Working with Files
-
-// const fs = require("fs/promises");
-import fs from "fs/promises";
-
-// Read File
-fs.readFile("readme.txt")
-  .then((data) => console.log(data.toString()))
-  .catch((err) => console.log(err.message));
-
-// Write File
-fs.writeFile("readme.txt", "Hello, I will write a new text ");
+/*
+  - \x1B  -> escape character (ASCII code 27).
+  - [     -> indicates the start of an ANSI escape sequence.
+  - 31    -> specifies the color code for red text.
+  - m     -> terminates the sequence.
+   */
