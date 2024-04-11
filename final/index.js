@@ -4,7 +4,8 @@ const program = new Command();
 program
   .option("-s, --show", "Display your information")
   .option("-n, --name <name>", "Your name")
-  .option("-g, --gender <gender>", "Your gender");
+  .option("-g, --gender <gender>", "Your gender")
+  .allowUnknownOption(true);
 
 program.parse(process.argv);
 
