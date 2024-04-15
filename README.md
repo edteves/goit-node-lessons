@@ -4,7 +4,9 @@
 
 - cd starter/ open starter folder to have a clean file
 
-## Module 1 - Lesson 2: Creating Console Applications
+## Module 2 - Lesson 3: The Framework Express
 
-- Creating Console Applications
-- Commander Module
+- Introduction
+- Middleware
+- Passing data to a server
+- Application Routing
