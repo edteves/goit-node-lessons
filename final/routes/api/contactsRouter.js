@@ -3,7 +3,7 @@ import { mockData } from "../../models/mockData.js";
 
 const router = express.Router();
 
-/* GET: // http://localhost:3000/api/contacts/
+/* GET: // http://localhost:3000/api/contacts
  */
 router.get("/", async (req, res, next) => {
   try {
@@ -20,7 +20,9 @@ router.get("/:contactId", async (req, res, next) => {
   try {
     //LOGIC HERE
     const { contactId } = req.params;
-    const contact = mockData.find((contact) => contact.id === contactId);
+    const contact = mockData.find(
+      (contact) => contact.id === parseInt(contactId)
+    );
     if (!contact) {
       const err = new Error("Contact not found");
       err.status = 404;
@@ -57,7 +59,7 @@ router.delete("/:contactId", async (req, res, next) => {
   try {
     //LOGIC HERE
     const { contactId } = req.params;
-    mockData.filter((contact) => contact.id !== contactId);
+    mockData.filter((contact) => contact.id !== parseInt(contactId));
     res.json({ message: "Contact deleted" });
   } catch (error) {
     next(error);
@@ -75,7 +77,9 @@ router.put("/:contactId", async (req, res, next) => {
     //LOGIC HERE
     const { contactId } = req.params;
     const { name, email } = req.body;
-    const index = mockData.findIndex((contact) => contact.id === contactId);
+    const index = mockData.findIndex(
+      (contact) => contact.id === parseInt(contactId)
+    );
     if (index === -1) {
       const err = new Error("Contact not found");
       err.status = 404;
