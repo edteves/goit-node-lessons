@@ -20,9 +20,7 @@ router.get("/:contactId", async (req, res, next) => {
   try {
     //LOGIC HERE
     const { contactId } = req.params;
-    const contact = mockData.find(
-      (contact) => contact.id === parseInt(contactId)
-    );
+    const contact = mockData.find((contact) => contact.id === contactId);
     if (!contact) {
       const err = new Error("Contact not found");
       err.status = 404;
@@ -59,7 +57,7 @@ router.delete("/:contactId", async (req, res, next) => {
   try {
     //LOGIC HERE
     const { contactId } = req.params;
-    mockData.filter((contact) => contact.id !== parseInt(contactId));
+    mockData.filter((contact) => contact.id !== contactId);
     res.json({ message: "Contact deleted" });
   } catch (error) {
     next(error);
@@ -77,9 +75,7 @@ router.put("/:contactId", async (req, res, next) => {
     //LOGIC HERE
     const { contactId } = req.params;
     const { name, email } = req.body;
-    const index = mockData.findIndex(
-      (contact) => contact.id === parseInt(contactId)
-    );
+    const index = mockData.findIndex((contact) => contact.id === contactId);
     if (index === -1) {
       const err = new Error("Contact not found");
       err.status = 404;
