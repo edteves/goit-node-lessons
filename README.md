@@ -2,11 +2,15 @@
 
 ## SETUP
 
-- cd starter/ open starter folder to have a clean file
+- cd final/ open final folder
 
-## Module 2 - Lesson 3: The Framework Express
+## Module 2 - Lesson 4: REST API
 
-- Introduction
-- Middleware
-- Passing data to a server
-- Application Routing
+- Sample application
+- Environment Variables
+- Logging
+- What is REST
+- Basic HTTP Methods
+- CORS
+- Creating URL for REST API
+- Sample REST API Application

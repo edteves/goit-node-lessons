@@ -7,7 +7,7 @@ const router = express.Router();
  */
 router.get("/", async (req, res, next) => {
   try {
-    //LOGIC HERE
+    // LOGIC HERE
     res.json(mockData);
   } catch (error) {
     next(error);
@@ -18,7 +18,7 @@ router.get("/", async (req, res, next) => {
  */
 router.get("/:contactId", async (req, res, next) => {
   try {
-    //LOGIC HERE
+    // LOGIC HERE
     const { contactId } = req.params;
     const contact = mockData.find(
       (contact) => contact.id === parseInt(contactId)
@@ -43,7 +43,7 @@ router.get("/:contactId", async (req, res, next) => {
 */
 router.post("/", async (req, res, next) => {
   try {
-    //LOGIC HERE
+    // LOGIC HERE
     const { name, email } = req.body;
     const newContact = { id: mockData.length + 1, name, email };
     mockData.push(newContact);
@@ -57,7 +57,7 @@ router.post("/", async (req, res, next) => {
  */
 router.delete("/:contactId", async (req, res, next) => {
   try {
-    //LOGIC HERE
+    // LOGIC HERE
     const { contactId } = req.params;
     mockData.filter((contact) => contact.id !== parseInt(contactId));
     res.json({ message: "Contact deleted" });
@@ -74,7 +74,7 @@ router.delete("/:contactId", async (req, res, next) => {
 */
 router.put("/:contactId", async (req, res, next) => {
   try {
-    //LOGIC HERE
+    // LOGIC HERE
     const { contactId } = req.params;
     const { name, email } = req.body;
     const index = mockData.findIndex(
