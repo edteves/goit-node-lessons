@@ -1,38 +1,17 @@
 import express from "express";
-import { mockData } from "../../models/mockData.js";
+import { ctrlWrapper } from "../../helpers/ctrlWrapper.js";
+// prettier-ignore
+import { getAllContacts, getContactsById, addContact, deleteContact, updateContactById} from "../../controllers/contactsController.js";
 
 const router = express.Router();
 
 /* GET: // http://localhost:3000/api/contacts
  */
-router.get("/", async (req, res, next) => {
-  try {
-    // LOGIC HERE
-    res.json(mockData);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/", ctrlWrapper(getAllContacts));
 
 /* GET: // http://localhost:3000/api/contacts/1
  */
-router.get("/:contactId", async (req, res, next) => {
-  try {
-    // LOGIC HERE
-    const { contactId } = req.params;
-    const contact = mockData.find(
-      (contact) => contact.id === parseInt(contactId)
-    );
-    if (!contact) {
-      const err = new Error("Contact not found");
-      err.status = 404;
-      return next(err);
-    }
-    res.json(contact);
-  } catch (error) {
-    next(error);
-  }
-});
+router.get("/:contactId", ctrlWrapper(getContactsById));
 
 /* POST: // http://localhost:3000/api/contacts/ 
 {
@@ -41,30 +20,11 @@ router.get("/:contactId", async (req, res, next) => {
     "email": "marvinpacis@example.com"
 } 
 */
-router.post("/", async (req, res, next) => {
-  try {
-    // LOGIC HERE
-    const { name, email } = req.body;
-    const newContact = { id: mockData.length + 1, name, email };
-    mockData.push(newContact);
-    res.status(201).json(newContact);
-  } catch (error) {
-    next(error);
-  }
-});
+router.post("/", ctrlWrapper(addContact));
 
 /* DELETE: // http://localhost:3000/api/contacts/1
  */
-router.delete("/:contactId", async (req, res, next) => {
-  try {
-    // LOGIC HERE
-    const { contactId } = req.params;
-    mockData.filter((contact) => contact.id !== parseInt(contactId));
-    res.json({ message: "Contact deleted" });
-  } catch (error) {
-    next(error);
-  }
-});
+router.delete("/:contactId", ctrlWrapper(deleteContact));
 
 /* PUT: // http://localhost:3000/api/contacts/1
 {
@@ -72,24 +32,6 @@ router.delete("/:contactId", async (req, res, next) => {
     "email": "shaw@example.com"
 } 
 */
-router.put("/:contactId", async (req, res, next) => {
-  try {
-    // LOGIC HERE
-    const { contactId } = req.params;
-    const { name, email } = req.body;
-    const index = mockData.findIndex(
-      (contact) => contact.id === parseInt(contactId)
-    );
-    if (index === -1) {
-      const err = new Error("Contact not found");
-      err.status = 404;
-      return next(err);
-    }
-    mockData[index] = { ...mockData[index], name, email };
-    res.json(mockData[index]);
-  } catch (error) {
-    next(error);
-  }
-});
+router.put("/:contactId", ctrlWrapper(updateContactById));
 
 export { router };
