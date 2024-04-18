@@ -6,7 +6,6 @@ const getAllContacts = (_req, res) => {
 };
 
 const getContactsById = (req, res) => {
-  // LOGIC HERE
   const { contactId } = req.params;
   const contact = mockData.find(
     (contact) => contact.id === parseInt(contactId)
