@@ -2,7 +2,7 @@
 
 ## SETUP
 
-- cd final/ open final folder
+- cd starter/ open starter folder
 
 ## Module 2 - Lesson 4: REST API
 
