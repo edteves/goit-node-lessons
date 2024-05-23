@@ -2,15 +2,9 @@
 
 ## SETUP
 
-- cd starter/ open starter folder
+- cd final/ open final folder
 
-## Module 2 - Lesson 4: REST API
+## Module 3 - Lesson 6: ODM Mongoose
 
-- Sample application
-- Environment Variables
-- Logging
-- What is REST
-- Basic HTTP Methods
-- CORS
-- Creating URL for REST API
-- Sample REST API Application
+- Mongoose
+- Connecting Mongoose
